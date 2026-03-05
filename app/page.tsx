@@ -4,8 +4,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Header } from '@/components/Header'
 
-const SWITCH_APP_URL = 'http://localhost:18503'
+const SWITCH_APP_URL = 'https://switch.share.zrok.io/'
 const LOGO_SRC = '/logo.png'
+
+const FIELD_IMAGE_BASE = '/field-images'
 
 const fields = [
   {
@@ -44,44 +46,69 @@ const fields = [
     description: 'Therapeutic dialogue and active listening practice.',
     available: false,
   },
+  {
+    id: 'legal-consultation',
+    title: 'Legal Consultation',
+    subtitle: null,
+    description: 'Client intake and legal consultation communication practice.',
+    available: false,
+  },
 ] as const
 
 function FieldCard({
+  id,
   title,
   subtitle,
   description,
   available,
   href,
 }: {
+  id: string
   title: string
   subtitle: string | null
   description: string
   available: boolean
   href?: string
 }) {
+  const imageSrc = `${FIELD_IMAGE_BASE}/${id}.jpg`
   const content = (
     <>
-      <div className="flex items-baseline gap-2 flex-wrap">
-        <h3 className="text-xl font-bold text-brand-900">{title}</h3>
-        {subtitle && (
-          <span className="text-sm font-semibold text-brand-600 bg-brand-100 px-2 py-0.5 rounded">
-            {subtitle}
+      <div className="relative w-full aspect-[4/3] rounded-t-2xl overflow-hidden bg-brand-50">
+        <Image
+          src={imageSrc}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement
+            target.style.display = 'none'
+          }}
+        />
+      </div>
+      <div className="p-6 flex flex-col">
+        <div className="flex items-baseline gap-2 flex-wrap">
+          <h3 className="text-xl font-bold text-brand-900">{title}</h3>
+          {subtitle && (
+            <span className="text-sm font-semibold text-brand-600 bg-brand-100 px-2 py-0.5 rounded">
+              {subtitle}
+            </span>
+          )}
+        </div>
+        <p className="text-brand-800/90 text-sm mt-2 leading-relaxed">{description}</p>
+        {available ? (
+          <span className="inline-flex items-center gap-1.5 mt-4 text-brand-600 font-semibold text-sm">
+            Open app
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1.5 mt-4 text-amber-700 bg-amber-100 px-3 py-1 rounded-full text-sm font-medium">
+            Under development
           </span>
         )}
       </div>
-      <p className="text-brand-800/90 text-sm mt-2 leading-relaxed">{description}</p>
-      {available ? (
-        <span className="inline-flex items-center gap-1.5 mt-4 text-brand-600 font-semibold text-sm">
-          Open app
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </span>
-      ) : (
-        <span className="inline-flex items-center gap-1.5 mt-4 text-amber-700 bg-amber-100 px-3 py-1 rounded-full text-sm font-medium">
-          Under development
-        </span>
-      )}
     </>
   )
 
@@ -91,7 +118,7 @@ function FieldCard({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group block rounded-2xl bg-white p-6 shadow-card border border-brand-100 hover:shadow-cardHover hover:border-brand-300 transition-all duration-300 text-left"
+        className="group block rounded-2xl bg-white shadow-card border border-brand-100 hover:shadow-cardHover hover:border-brand-300 transition-all duration-300 text-left overflow-hidden"
       >
         {content}
       </a>
@@ -100,7 +127,7 @@ function FieldCard({
 
   return (
     <div
-      className="rounded-2xl bg-white/90 p-6 shadow-sm border border-brand-100 text-left cursor-not-allowed opacity-90"
+      className="rounded-2xl bg-white/90 shadow-sm border border-brand-100 text-left cursor-not-allowed opacity-90 overflow-hidden"
       aria-disabled
     >
       {content}
@@ -134,6 +161,7 @@ export default function Home() {
           {fields.map((field) => (
             <FieldCard
               key={field.id}
+              id={field.id}
               title={field.title}
               subtitle={field.subtitle}
               description={field.description}
