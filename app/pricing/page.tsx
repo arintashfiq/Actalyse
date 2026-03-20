@@ -6,75 +6,74 @@ import { Header } from '@/components/Header'
 
 const plans = [
   {
-    id: 'free',
-    name: 'Free',
-    tagline: 'Get started with ACTalyse',
-    price: 0,
-    period: 'forever',
-    credits: '10 practice sessions per month',
-    features: [
-      'Access to 1 training field (Social Work)',
-      'Basic client scenarios',
-      'Email support',
-      'Community access',
-    ],
-    cta: 'Get started free',
-    href: '#',
-    highlighted: false,
-  },
-  {
-    id: 'standard',
-    name: 'Standard',
-    tagline: 'For regular practitioners',
-    price: 19,
+    id: 'base',
+    name: 'Base',
+    tagline: 'All fields, limited practice—start building confidence fast.',
+    price: 149,
     period: 'month',
-    credits: '50 practice sessions per month',
+    credits: '10 sessions/month across all fields',
     features: [
-      'All available training fields',
-      'Expanded client scenarios',
-      'Real-time feedback',
+      'Access to all available fields (incl. future launches)',
+      '2 client profiles per field (2 scenarios)',
+      'Standard guided feedback',
+      'Basic session history',
       'Email support',
-      'Session history',
     ],
-    cta: 'Start free trial',
+    cta: 'Start Base',
     href: '#',
     highlighted: false,
   },
   {
     id: 'pro',
     name: 'Pro',
-    tagline: 'For dedicated professionals',
-    price: 49,
+    tagline: 'More scenarios, more complex cases—deeper coaching for real practice.',
+    price: 199,
     period: 'month',
-    credits: '200 practice sessions per month',
+    credits: '25 sessions/month across all fields',
     features: [
-      'Everything in Standard',
-      'Priority support',
-      'Custom scenario requests',
-      'Progress analytics',
-      'Certificate of completion',
-      'Early access to new fields',
+      'Access to all available fields',
+      '4 client profiles per field (4 scenarios)',
+      'More complex client backgrounds',
+      'Advanced feedback + session review',
+      'Priority email support',
     ],
-    cta: 'Start free trial',
+    cta: 'Start Pro',
     href: '#',
     highlighted: true,
   },
   {
     id: 'premium',
     name: 'Premium',
-    tagline: 'For teams and institutions',
-    price: null,
-    period: 'Custom',
-    credits: 'Unlimited sessions',
+    tagline: 'Unlimited profiles + unlimited practice—maximum training capacity.',
+    price: 399,
+    period: 'month',
+    credits: 'Unlimited sessions across all fields',
     features: [
-      'Everything in Pro',
-      'Unlimited users (team licence)',
-      'Dedicated account manager',
-      'Custom integrations',
-      'SSO & compliance support',
-      'Onboarding & training',
+      'Unlimited client profiles per field',
+      'Unlimited practice sessions',
+      'Full scenario library access',
+      'Advanced analytics (strengths/weaknesses trends)',
+      'Highest priority support + early access',
     ],
-    cta: 'Contact sales',
+    cta: 'Go Premium',
+    href: '#',
+    highlighted: false,
+  },
+  {
+    id: 'educational',
+    name: 'Educational',
+    tagline: 'Premium facilities for education at a lower per-account price.',
+    price: 199,
+    period: 'month',
+    credits: 'Per educational account',
+    features: [
+      'Includes Premium facilities',
+      'Unlimited client profiles per field',
+      'Unlimited practice sessions',
+      'Instructor-ready reporting (training admin tools)',
+      'Education-focused onboarding & support',
+    ],
+    cta: 'Request education pricing',
     href: '#',
     highlighted: false,
   },
@@ -178,7 +177,7 @@ export default function PricingPage() {
             Subscription plans
           </h1>
           <p className="text-brand-800 mt-3 max-w-xl mx-auto">
-            Choose the plan that fits your practice. Start free and upgrade as you grow.
+            Choose the tier that matches your training intensity. Upgrade anytime.
           </p>
         </section>
 
@@ -202,7 +201,7 @@ export default function PricingPage() {
         </section>
 
         <p className="text-center text-brand-700 text-sm mt-10">
-          All paid plans include a 14-day free trial. No credit card required to start.
+          Built for hands-on communication training—pick your capacity and coach yourself faster.
         </p>
 
         <footer className="mt-16 pt-8 border-t border-brand-100 text-center text-brand-700 text-sm">
