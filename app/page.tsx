@@ -19,6 +19,13 @@ const fields = [
     href: SWITCH_APP_URL,
   },
   {
+    id: 'customer-care',
+    title: 'Customer Care',
+    subtitle: null,
+    description: 'Customer-facing communication practice for support, service recovery, and difficult conversations.',
+    available: false,
+  },
+  {
     id: 'psychiatry',
     title: 'Psychiatry',
     subtitle: null,
