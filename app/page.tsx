@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Header } from '@/components/Header'
 
-const SWITCH_APP_URL = 'https://5ec7r8wb6aei.share.zrok.io'
+const SWITCH_APP_URL = 'https://switch.share.zrok.io'
 const LOGO_SRC = '/logo.png'
 
 const FIELD_IMAGE_BASE = '/field-images'
